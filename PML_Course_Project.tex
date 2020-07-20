@@ -1,0 +1,321 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={PML Course Project},
+  pdfauthor={Nick Campono},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\title{PML Course Project}
+\author{Nick Campono}
+\date{7/20/2020}
+
+\begin{document}
+\maketitle
+
+One thing that people regularly do is quantify how much of a particular
+activity they do, but they rarely quantify how well they do it.
+
+Our for this project will be to use data from accelerometers on the
+belt, forearm, arm, and dumbell of 6 participants to predict the mannar
+in which someone performs their exercise.
+
+\hypertarget{load-and-clean-data}{%
+\subsection{Load and Clean data}\label{load-and-clean-data}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{setwd}\NormalTok{(}\StringTok{'C:/Users/ncampono/Desktop/R/Courses/Practical Machine Learning/Practical_Machine_Learning'}\NormalTok{)}
+\NormalTok{trainingPML =}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{'pml-training.csv'}\NormalTok{, }\DataTypeTok{na.strings=}\KeywordTok{c}\NormalTok{(}\StringTok{"NA"}\NormalTok{,}\StringTok{"#DIV/0!"}\NormalTok{,}\StringTok{""}\NormalTok{))}
+\NormalTok{testingPML =}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{'pml-testing.csv'}\NormalTok{, }\DataTypeTok{na.strings=}\KeywordTok{c}\NormalTok{(}\StringTok{"NA"}\NormalTok{,}\StringTok{"#DIV/0!"}\NormalTok{,}\StringTok{""}\NormalTok{))}
+
+\CommentTok{# delete variables that we can't use for prediction}
+\NormalTok{trainingPML <-}\StringTok{ }\NormalTok{trainingPML[,}\OperatorTok{-}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{7}\NormalTok{)]}
+\NormalTok{testingPML <-}\StringTok{ }\NormalTok{testingPML[,}\OperatorTok{-}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{7}\NormalTok{)]}
+
+
+\CommentTok{# delete columns with all missing data}
+\NormalTok{trainingPML<-trainingPML[,}\KeywordTok{colSums}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(trainingPML)) }\OperatorTok{==}\StringTok{ }\DecValTok{0}\NormalTok{]}
+\NormalTok{testingPML <-testingPML[,}\KeywordTok{colSums}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(testingPML)) }\OperatorTok{==}\StringTok{ }\DecValTok{0}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{create-training-and-test-datasets-for-modeling}{%
+\subsection{Create Training and Test datasets for
+modeling}\label{create-training-and-test-datasets-for-modeling}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1234}\NormalTok{)}
+\NormalTok{inTrain <-}\StringTok{ }\KeywordTok{createDataPartition}\NormalTok{(}\DataTypeTok{y=}\NormalTok{trainingPML}\OperatorTok{$}\NormalTok{classe, }\DataTypeTok{p=}\FloatTok{0.7}\NormalTok{, }\DataTypeTok{list=}\OtherTok{FALSE}\NormalTok{)}
+\NormalTok{training <-}\StringTok{ }\NormalTok{trainingPML[inTrain,]}
+\NormalTok{testing <-}\StringTok{ }\NormalTok{trainingPML[}\OperatorTok{-}\NormalTok{inTrain,]}
+
+\KeywordTok{dim}\NormalTok{(training)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 13737    53
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{dim}\NormalTok{(testing)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5885   53
+\end{verbatim}
+
+the data plot the frequency of the classe variable to see what the
+frequency in the training set is
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(trainingPML}\OperatorTok{$}\NormalTok{classe, }\DataTypeTok{col =} \StringTok{'#00004d'}\NormalTok{, }\DataTypeTok{main=}\StringTok{'Variable Classe Frequency'}\NormalTok{, }\DataTypeTok{xlab=}\StringTok{'classe'}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{'Frequency'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{PML_Course_Project_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+\hypertarget{prediction-model-1-decision-tree}{%
+\subsection{Prediction Model 1: Decision
+Tree}\label{prediction-model-1-decision-tree}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model.DT <-}\StringTok{ }\KeywordTok{rpart}\NormalTok{(classe }\OperatorTok{~}\StringTok{ }\NormalTok{., }\DataTypeTok{data=}\NormalTok{training, }\DataTypeTok{method=}\StringTok{"class"}\NormalTok{)}
+
+\NormalTok{pred.DT<-}\StringTok{ }\KeywordTok{predict}\NormalTok{(model.DT, testing, }\DataTypeTok{type =} \StringTok{'class'}\NormalTok{)}
+
+\CommentTok{# decision tree plot}
+
+\KeywordTok{rpart.plot}\NormalTok{(model.DT, }\DataTypeTok{main=}\StringTok{"Classification Tree"}\NormalTok{, }\DataTypeTok{extra=}\DecValTok{102}\NormalTok{, }\DataTypeTok{under=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{faclen=}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{PML_Course_Project_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# confusion matrix}
+\KeywordTok{confusionMatrix}\NormalTok{(pred.DT, testing}\OperatorTok{$}\NormalTok{classe)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction    A    B    C    D    E
+##          A 1522  167   12   49   13
+##          B   58  706  100   79   96
+##          C   47  109  819  148  139
+##          D   25   94   67  609   52
+##          E   22   63   28   79  782
+## 
+## Overall Statistics
+##                                           
+##                Accuracy : 0.7541          
+##                  95% CI : (0.7429, 0.7651)
+##     No Information Rate : 0.2845          
+##     P-Value [Acc > NIR] : < 2.2e-16       
+##                                           
+##                   Kappa : 0.6885          
+##                                           
+##  Mcnemar's Test P-Value : < 2.2e-16       
+## 
+## Statistics by Class:
+## 
+##                      Class: A Class: B Class: C Class: D Class: E
+## Sensitivity            0.9092   0.6198   0.7982   0.6317   0.7227
+## Specificity            0.9428   0.9298   0.9088   0.9516   0.9600
+## Pos Pred Value         0.8633   0.6795   0.6490   0.7190   0.8029
+## Neg Pred Value         0.9631   0.9106   0.9552   0.9295   0.9389
+## Prevalence             0.2845   0.1935   0.1743   0.1638   0.1839
+## Detection Rate         0.2586   0.1200   0.1392   0.1035   0.1329
+## Detection Prevalence   0.2996   0.1766   0.2144   0.1439   0.1655
+## Balanced Accuracy      0.9260   0.7748   0.8535   0.7917   0.8414
+\end{verbatim}
+
+Accuracy for the Decision Tree is 68.79\%
+
+\hypertarget{prediction-model-2-random-forest}{%
+\subsection{Prediction Model 2: Random
+Forest}\label{prediction-model-2-random-forest}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model.RF<-}\StringTok{ }\KeywordTok{randomForest}\NormalTok{(classe }\OperatorTok{~}\NormalTok{. , }\DataTypeTok{data =}\NormalTok{ training, }\DataTypeTok{method =} \StringTok{'class'}\NormalTok{)}
+
+\NormalTok{pred.RF <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(model.RF, training, }\DataTypeTok{type =} \StringTok{"class"}\NormalTok{)}
+
+\CommentTok{# confusion matrix}
+\KeywordTok{confusionMatrix}\NormalTok{(pred.RF, training}\OperatorTok{$}\NormalTok{classe)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction    A    B    C    D    E
+##          A 3906    0    0    0    0
+##          B    0 2658    0    0    0
+##          C    0    0 2396    0    0
+##          D    0    0    0 2252    0
+##          E    0    0    0    0 2525
+## 
+## Overall Statistics
+##                                      
+##                Accuracy : 1          
+##                  95% CI : (0.9997, 1)
+##     No Information Rate : 0.2843     
+##     P-Value [Acc > NIR] : < 2.2e-16  
+##                                      
+##                   Kappa : 1          
+##                                      
+##  Mcnemar's Test P-Value : NA         
+## 
+## Statistics by Class:
+## 
+##                      Class: A Class: B Class: C Class: D Class: E
+## Sensitivity            1.0000   1.0000   1.0000   1.0000   1.0000
+## Specificity            1.0000   1.0000   1.0000   1.0000   1.0000
+## Pos Pred Value         1.0000   1.0000   1.0000   1.0000   1.0000
+## Neg Pred Value         1.0000   1.0000   1.0000   1.0000   1.0000
+## Prevalence             0.2843   0.1935   0.1744   0.1639   0.1838
+## Detection Rate         0.2843   0.1935   0.1744   0.1639   0.1838
+## Detection Prevalence   0.2843   0.1935   0.1744   0.1639   0.1838
+## Balanced Accuracy      1.0000   1.0000   1.0000   1.0000   1.0000
+\end{verbatim}
+
+Accuracy for the Random Forest is 100\%. Random Forest algorithm
+performed better than Decision Trees. We will use the Random Forest
+prediction model for modeling the testing dataset.
+
+\hypertarget{predict-testing-data}{%
+\subsection{Predict Testing Data}\label{predict-testing-data}}
+
+predict the testing data set using the random forest
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pred.FINAL <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(model.RF, testingPML, }\DataTypeTok{type=}\StringTok{"class"}\NormalTok{)}
+\NormalTok{pred.FINAL}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 
+##  B  A  B  A  A  E  D  B  A  A  B  C  B  A  E  E  A  B  B  B 
+## Levels: A B C D E
+\end{verbatim}
+
+\hypertarget{discussion}{%
+\subsection{Discussion}\label{discussion}}
+
+For this project 19622 observations from weight lifting were used to
+predict correct body movement during. We looked at two models Random
+Forest and Decision Trees. The Decision Tree model wasn't as accurate as
+the Random Forest model at predicting the classe. The Random Forest
+model had a 100\% accuracy rate for the testing dataset. We used this
+model to predict the test data and correctly identified all 20 classe's.
+
+\end{document}
