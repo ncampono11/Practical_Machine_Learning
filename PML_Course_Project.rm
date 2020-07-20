@@ -1,0 +1,94 @@
+---
+title: "PML Course Project"
+author: "Nick Campono"
+date: "7/20/2020"
+output: html_document
+---
+
+One thing that people regularly do is quantify how much of a particular activity they do,
+but they rarely quantify how well they do it. 
+
+Our for this project will be to use data from accelerometers on the belt, forearm, arm, and dumbell of 6 participants to predict the mannar in which someone performs their exercise.
+
+```{r , echo = FALSE , message = FALSE  }
+library(caret)
+library(randomForest)
+library(rpart) 
+library(rpart.plot)
+library(rattle)
+```
+
+## Load and Clean data
+```{r , echo = TRUE }
+setwd('C:/Users/ncampono/Desktop/R/Courses/Practical Machine Learning/Practical_Machine_Learning')
+trainingPML = read.csv('pml-training.csv', na.strings=c("NA","#DIV/0!",""))
+testingPML = read.csv('pml-testing.csv', na.strings=c("NA","#DIV/0!",""))
+
+# delete variables that we can't use for prediction
+trainingPML <- trainingPML[,-c(1:7)]
+testingPML <- testingPML[,-c(1:7)]
+
+
+# delete columns with all missing data
+trainingPML<-trainingPML[,colSums(is.na(trainingPML)) == 0]
+testingPML <-testingPML[,colSums(is.na(testingPML)) == 0]
+```
+
+
+## Create Training and Test datasets for modeling
+```{r , echo = TRUE }
+set.seed(1234)
+inTrain <- createDataPartition(y=trainingPML$classe, p=0.7, list=FALSE)
+training <- trainingPML[inTrain,]
+testing <- trainingPML[-inTrain,]
+
+dim(training)
+dim(testing)
+```
+
+ the data
+plot the frequency of the classe variable to see what the frequency in the training set is
+```{r , echo = TRUE }
+plot(trainingPML$classe, col = '#00004d', main='Variable Classe Frequency', xlab='classe', ylab='Frequency')
+```
+
+## Prediction Model 1: Decision Tree
+
+```{r , echo = TRUE }
+model.DT <- rpart(classe ~ ., data=training, method="class")
+
+pred.DT<- predict(model.DT, testing, type = 'class')
+
+# decision tree plot
+
+rpart.plot(model.DT, main="Classification Tree", extra=102, under=TRUE, faclen=0)
+
+# confusion matrix
+confusionMatrix(pred.DT, testing$classe)
+```
+Accuracy for the Decision Tree is 68.79%
+
+## Prediction Model 2: Random Forest
+
+```{r , echo = TRUE }
+model.RF<- randomForest(classe ~. , data = training, method = 'class')
+
+pred.RF <- predict(model.RF, training, type = "class")
+
+# confusion matrix
+confusionMatrix(pred.RF, training$classe)
+```
+Accuracy for the Random Forest is 100%. Random Forest algorithm performed better than Decision Trees. 
+We will use the Random Forest prediction model for modeling the testing dataset.
+
+## Predict Testing Data
+
+predict the testing data set using the random forest
+
+```{r , echo = TRUE }
+pred.FINAL <- predict(model.RF, testingPML, type="class")
+pred.FINAL
+```
+
+## Discussion
+For this project 19622 observations from weight lifting were used to predict correct body movement during. We looked at two models Random Forest and Decision Trees. The Decision Tree model wasn't as accurate as the Random Forest model at predicting the classe. The Random Forest model had a 100% accuracy rate for the testing dataset. We used this model to predict the test data and correctly identified all 20 classe's. 
